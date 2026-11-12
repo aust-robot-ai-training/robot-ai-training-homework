@@ -8,7 +8,7 @@ import sys
 import time
 from pathlib import Path
 
-REPOSITORY = "o-1717986918/robot-ai-training-homework"
+REPOSITORY = "aust-robot-ai-training/robot-ai-training-homework"
 WORKFLOW = "phase1-autograde.yml"
 
 

@@ -39,8 +39,13 @@ def main():
     for names,expected in [('Ada\n','Ada'),('Ada\nBob\n','Ada and Bob'),('Ada\nBob\nCarol\n','Ada, Bob, and Carol')]:
         check('adieu '+repr(names),lambda n=names,e=expected:cli('adieu',n,last_line='Adieu, adieu, to '+e))
     check('figlet named font',lambda:cli('figlet','CS50\n',[Figlet(font='slant').renderText('CS50')],['-f','slant']))
+    def reject_figlet(argv):
+        command=[sys.executable,str(args.root/'figlet'/'figlet.py'),*argv]
+        p=subprocess.run(command,input='',capture_output=True,text=True,encoding='utf-8',timeout=30)
+        assert p.returncode!=0, (p.returncode,p.stdout,p.stderr)
+        assert (p.stdout+p.stderr).strip(), 'Expected an error message'
     for argv in [['one'],['-a','slant'],['-f','not_a_font'],['-f','slant','extra']]:
-        check('figlet rejects '+repr(argv),lambda a=argv:cli('figlet','',['Invalid usage'],a,1))
+        check('figlet rejects '+repr(argv),lambda a=argv:reject_figlet(a))
     check('figlet random font executes',lambda:cli('figlet','CS50\n'))
     spec=importlib.util.spec_from_file_location('professor',args.root/'professor/professor.py')
     professor=importlib.util.module_from_spec(spec)
@@ -61,7 +66,7 @@ def main():
         # First question succeeds on third attempt, second fails three times.
         inputs=['bad','0','1','bad','0','5','0','0','0']+['5']*8
         output=io.StringIO()
-        with patch('builtins.input',side_effect=inputs),patch.object(professor.random,'randint',side_effect=[2,3]*10),contextlib.redirect_stdout(output):
+        with patch('builtins.input',side_effect=inputs),patch.object(professor,'generate_integer',side_effect=[2,3]*10),contextlib.redirect_stdout(output):
             professor.main()
         assert output.getvalue().count('EEE')==5,output.getvalue()
         assert '2 + 3 = 5' in output.getvalue()

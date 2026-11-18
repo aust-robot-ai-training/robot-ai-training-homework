@@ -1,0 +1,12 @@
+﻿image_id,relative_path,group
+coffee01,photos/coffee.png,train
+cat01,photos/chelsea.png,val
+camera01,nested/灰度相机.PNG,test
+grid01,landscape.png,train
+portrait01,portrait.jpg,val
+small01,small.PNG,test
+logo01,logo.png,train
+coffee01,photos/chelsea.png,test
+missing01,missing.png,val
+bad01,broken.jpg,train
+group01,landscape.png,unknown

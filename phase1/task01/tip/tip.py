@@ -5,8 +5,8 @@ def percent_to_float(p:str) ->float:
     return num / 100
 
 def main():
-    money = input("How much was the meal? ")
-    tip_percent = input("What percentage would you like to tip?")
+    money = input("How much was the meal? \n")
+    tip_percent = input("What percentage would you like to tip?\n")
     meal = dollors_to_float(money)
     rate = percent_to_float(tip_percent)
     res = meal * rate
@@ -14,4 +14,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

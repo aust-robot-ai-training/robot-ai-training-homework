@@ -2,6 +2,7 @@ import re
 # 确保24小时制
 
 
+
 # 转换时间
 def convert(time):
     hours,min=map(int,time.split(':'))
@@ -12,13 +13,13 @@ def convert(time):
 # 主体函数
 def main():
     if convert(time)>=7 and convert(time)<=8:
-        print("Breakfast")    
+        print("breakfast time")    
 
     elif convert(time)>=12 and convert(time)<=13:
-        print("Lunch")
+        print("lunch time")
 
     elif convert(time)>=18 and convert(time)<=19:
-        print("Dinner")
+        print("dinner time")
 
     else:
         print("It's not yet time")

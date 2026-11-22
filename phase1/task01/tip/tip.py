@@ -3,6 +3,7 @@ def dollar_to_float(strs):
 
 
 
+
 def percent_to_float(strs2):
     return float(strs2) / 100
 

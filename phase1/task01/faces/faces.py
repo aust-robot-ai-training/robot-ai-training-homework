@@ -10,6 +10,4 @@ def main():
         print(res1)
     convert(strs)
 
-main()    
-
-�
+main()

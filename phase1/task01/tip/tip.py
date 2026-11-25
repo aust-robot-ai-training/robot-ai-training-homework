@@ -9,5 +9,5 @@ def main():
     rate=percent_to_float(percent)
     tip=money*rate
     print(f"Leave ${tip:.2f}")
-if__name__ == "__maiin__":
+if __name__=="__main__":
     main()
